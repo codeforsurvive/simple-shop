@@ -1,0 +1,48 @@
+server:
+  servlet:
+    context-path: /
+
+logging:
+  level:
+    web: INFO
+  config: classpath:log4j.xml
+
+
+spring:
+  profiles:
+    active: dev
+  jpa:
+    database-platform: org.hibernate.community.dialect.SQLiteDialect
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+      format-sql: true
+      type: info
+      use-sql-comments: true
+      properties:
+        hibernate.use_sql_comments: true
+        hibernate.format_sql: true
+    show-sql: true
+    format-sql: true
+  datasource:
+    url: jdbc:sqlite:data/app.db
+    driver-class-name: org.sqlite.JDBC
+    username: sa
+    password: sa
+  sql:
+    init:
+      mode: always
+
+springdoc:
+  api-docs:
+    path: /docs
+  swagger-ui:
+    path: /swagger
+
+jwt:
+  secret-key: IslamIsMyLife1!
+  validity: 600_000
+  prefix: Bearer
+  header: Authorization
+  issuer: Accenture
