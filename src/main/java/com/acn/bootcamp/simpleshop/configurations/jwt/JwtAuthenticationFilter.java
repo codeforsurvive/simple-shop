@@ -1,8 +1,8 @@
 package com.acn.bootcamp.simpleshop.configurations.jwt;
 
 import com.acn.bootcamp.simpleshop.Constants;
-import com.acn.bootcamp.simpleshop.security.JwtService;
-import com.acn.bootcamp.simpleshop.security.UserIdentityService;
+import com.acn.bootcamp.simpleshop.services.JwtService;
+import com.acn.bootcamp.simpleshop.services.UserIdentityService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -40,7 +40,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        if (request.getServletPath().contains(Constants.AUTH_PATH)) {
+        if (request.getServletPath().contains(Constants.AUTH_ENDPOINT)) {
             filterChain.doFilter(request, response);
             return;
         }

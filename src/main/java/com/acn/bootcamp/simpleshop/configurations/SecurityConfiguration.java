@@ -1,7 +1,7 @@
 package com.acn.bootcamp.simpleshop.configurations;
 
 
-import  com.acn.bootcamp.simpleshop.security.UserIdentityService;
+import com.acn.bootcamp.simpleshop.services.UserIdentityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

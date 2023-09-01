@@ -1,11 +1,11 @@
 package com.acn.bootcamp.simpleshop.data.dto;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data @NoArgsConstructor
-public class UserCredentialDto {
-    public UserCredentialDto(String username, String password) {
+@Getter @Setter
+public class UserCredential {
+    public UserCredential(String username, String password) {
         this.username = username;
         this.password = password;
     }

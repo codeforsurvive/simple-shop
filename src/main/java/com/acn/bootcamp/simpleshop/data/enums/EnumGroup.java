@@ -8,6 +8,8 @@ public enum EnumGroup {
     BANKING_SERVICE_PROVIDER,
     RESOURCE_GROUP,
     CONTACT_TYPE,
-    ACCESS_LEVEL
+    ACCESS_LEVEL,
+    RATING_TYPE,
+    CATEGORY
 }
 

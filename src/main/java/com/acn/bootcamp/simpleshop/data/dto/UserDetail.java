@@ -1,23 +1,28 @@
 package com.acn.bootcamp.simpleshop.data.dto;
 
+import com.acn.bootcamp.simpleshop.data.domain.ResourceAccessControl;
 import com.acn.bootcamp.simpleshop.data.domain.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
+import java.util.stream.Collectors;
 
-public class UserDetailDto implements UserDetails {
+public class UserDetail implements UserDetails {
     private final User user;
-    public UserDetailDto(User user) {
-
+    private final Set<ResourceAccessControl> acls;
+    public UserDetail(User user, List<ResourceAccessControl> acls) {
         this.user = user;
+        this.acls = new HashSet<>(acls);
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority(user.getRole().name()));
+        return acls.stream()
+                .map(acl -> String.format("%s_%s", acl.getResourceGroup(), acl.getAccessLevel()))
+                .map(authority -> new SimpleGrantedAuthority(authority) )
+                .collect(Collectors.toList());
     }
 
     @Override

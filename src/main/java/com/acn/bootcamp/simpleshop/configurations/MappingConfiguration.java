@@ -10,10 +10,13 @@ public class MappingConfiguration {
     @Bean
     public ModelMapper getMappingConfiguration()
     {
-        var builder = new MappingConfigurationBuilder();
+        var mappingConfigurationBuilder = new MappingConfigurationBuilder();
 
-        builder.addContactMappings();
+        mappingConfigurationBuilder
+                .addContactMappings()
+                .addBankAccountMappings()
+                .addUserMappings();
 
-        return builder.build();
+        return mappingConfigurationBuilder.build();
     }
 }

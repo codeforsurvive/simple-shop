@@ -1,16 +1,20 @@
 package com.acn.bootcamp.simpleshop.data.domain;
+
 import com.acn.bootcamp.simpleshop.data.SchemaDefinition;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Data
-@NoArgsConstructor
+@Getter
+@AllArgsConstructor
 @Entity(name = SchemaDefinition.ENUM)
+@Table(indexes = {
+        @Index(name = "enum_idx_name", columnList = "name"),
+        @Index(name = "enum_idx_uuid", columnList = "uuid"),
+        @Index(name = "enum_idx_created_date", columnList = "createdDate"),
+        @Index(name = "enum_idx_modified_date", columnList = "modifiedDate")
+})
 public class Enumeration extends AuditableDomainBase {
 
     @NotNull
@@ -19,6 +23,5 @@ public class Enumeration extends AuditableDomainBase {
 
     @ManyToOne
     @JoinColumn(name = "group_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "ENUM_GROUPS_ENUMS_FK"))
-    @JsonBackReference
     private EnumerationGroup group;
 }

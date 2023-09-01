@@ -1,6 +1,7 @@
-package com.acn.bootcamp.simpleshop.security;
+package com.acn.bootcamp.simpleshop.services;
 
 import lombok.Synchronized;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.security.MessageDigest;
 
 @Service
+@Log4j2
 public class EncryptionService {
 
     @Autowired
@@ -35,6 +37,7 @@ public class EncryptionService {
             }
             return hexString.toString();
         } catch(Exception ex){
+            log.error(ex.getMessage());
             throw new RuntimeException(ex);
         }
     }

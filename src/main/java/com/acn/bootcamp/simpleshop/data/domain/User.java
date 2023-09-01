@@ -1,18 +1,19 @@
 package com.acn.bootcamp.simpleshop.data.domain;
 import com.acn.bootcamp.simpleshop.data.SchemaDefinition;
 import com.acn.bootcamp.simpleshop.data.enums.Role;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.util.Set;
 
 @Entity(name = SchemaDefinition.USER)
-@Data
-@NoArgsConstructor
+@Getter
+@AllArgsConstructor
 public class User extends AuditableDomainBase {
 
     public User(@NotNull String username, @NotNull String password, @NotNull Role role, @NotNull Boolean locked) {

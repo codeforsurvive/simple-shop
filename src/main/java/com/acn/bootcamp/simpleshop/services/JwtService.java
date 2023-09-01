@@ -1,4 +1,4 @@
-package com.acn.bootcamp.simpleshop.security;
+package com.acn.bootcamp.simpleshop.services;
 
 import com.acn.bootcamp.simpleshop.configurations.jwt.JwtConfiguration;
 import com.auth0.jwt.JWT;
